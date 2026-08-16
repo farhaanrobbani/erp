@@ -1,6 +1,9 @@
 <footer class="border-t border-slate-200 bg-blue-950 py-12 text-slate-400">
     <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 md:grid-cols-3">
         <div>
+            @if ($logo = \App\Models\CompanyProfile::value('general.logo'))
+                <img src="{{ asset('storage/' . $logo) }}" alt="{{ \App\Models\CompanyProfile::value('general.company_name', 'PT Karya Nusantara Konstruksi') }}" class="mb-3 h-10 w-auto">
+            @endif
             <p class="text-lg font-semibold text-white">{{ \App\Models\CompanyProfile::value('general.company_name', 'PT Karya Nusantara Konstruksi') }}</p>
             <p class="mt-2 text-sm">{{ \App\Models\CompanyProfile::value('general.slogan', 'Membangun Indonesia dengan kualitas, keselamatan, dan integritas.') }}</p>
         </div>

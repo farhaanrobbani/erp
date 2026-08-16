@@ -4,6 +4,7 @@ namespace App\Filament\Pages;
 
 use App\Models\CompanyProfile;
 use Filament\Actions;
+use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -42,6 +43,7 @@ class ManageWebsiteSettings extends Page
             'general_company_name' => CompanyProfile::value('general.company_name'),
             'general_slogan' => CompanyProfile::value('general.slogan'),
             'general_established_year' => CompanyProfile::value('general.established_year'),
+            'general_logo' => CompanyProfile::value('general.logo'),
             'hero_badge' => CompanyProfile::value('hero.badge'),
             'hero_title' => CompanyProfile::value('hero.title'),
             'hero_title_highlight' => CompanyProfile::value('hero.title_highlight'),
@@ -74,6 +76,7 @@ class ManageWebsiteSettings extends Page
         CompanyProfile::setValue('general.company_name', $data['general_company_name'], 'general');
         CompanyProfile::setValue('general.slogan', $data['general_slogan'], 'general');
         CompanyProfile::setValue('general.established_year', $data['general_established_year'], 'general');
+        CompanyProfile::setValue('general.logo', $data['general_logo'] ?? '', 'general');
 
         CompanyProfile::setValue('hero.badge', $data['hero_badge'], 'hero');
         CompanyProfile::setValue('hero.title', $data['hero_title'], 'hero');
@@ -122,6 +125,14 @@ class ManageWebsiteSettings extends Page
                         TextInput::make('general_company_name')->label('Nama Perusahaan')->required(),
                         TextInput::make('general_slogan')->label('Slogan')->maxLength(255),
                         TextInput::make('general_established_year')->label('Tahun Berdiri')->maxLength(10),
+                        FileUpload::make('general_logo')
+                            ->label('Logo')
+                            ->disk('public')
+                            ->directory('brand')
+                            ->image()
+                            ->imageEditor()
+                            ->helperText('Format PNG/SVG, disarankan latar transparan. Kosongkan untuk fallback teks.')
+                            ->columnSpanFull(),
                     ])
                     ->columns(3),
                 Section::make('Hero (Beranda)')

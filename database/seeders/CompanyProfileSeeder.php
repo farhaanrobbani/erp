@@ -12,6 +12,7 @@ class CompanyProfileSeeder extends Seeder
         CompanyProfile::setValue('general.company_name', 'PT Karya Nusantara Konstruksi', 'general');
         CompanyProfile::setValue('general.slogan', 'Membangun Infrastruktur, Menghadirkan Kepercayaan.', 'general');
         CompanyProfile::setValue('general.established_year', '2008', 'general');
+        CompanyProfile::setValue('general.logo', '', 'general');
 
         CompanyProfile::setValue('hero.badge', 'Terdaftar & terverifikasi untuk pengadaan BUMN/LPSE', 'hero');
         CompanyProfile::setValue('hero.title', 'Membangun Infrastruktur, Menghadirkan ', 'hero');

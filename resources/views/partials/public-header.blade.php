@@ -1,8 +1,16 @@
+@php
+    $companyName = \App\Models\CompanyProfile::value('general.company_name', 'Karya Nusantara');
+    $logo = \App\Models\CompanyProfile::value('general.logo');
+@endphp
 <header class="fixed inset-x-0 top-0 z-50 border-b border-white/10 bg-white/80 backdrop-blur">
     <nav class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="/" class="flex items-center gap-2 font-bold text-slate-900">
-            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">K</span>
-            <span>Karya Nusantara</span>
+            @if ($logo)
+                <img src="{{ asset('storage/' . $logo) }}" alt="{{ $companyName }}" class="h-9 w-auto">
+            @else
+                <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-blue-600 text-white">{{ strtoupper(mb_substr($companyName, 0, 1)) }}</span>
+                <span>{{ $companyName }}</span>
+            @endif
         </a>
         <div class="hidden items-center gap-6 text-sm font-medium text-slate-600 md:flex">
             <a href="/#tentang" class="hover:text-blue-600">Tentang</a>
