@@ -17,6 +17,8 @@ class Project extends Model
         return [
             'value' => 'decimal:2',
             'status' => \App\Enums\ProjectStatus::class,
+            'client_type' => \App\Enums\ProjectClientType::class,
+            'category' => \App\Enums\ProjectCategory::class,
             'start_date' => 'date',
             'end_date' => 'date',
             'is_featured' => 'boolean',

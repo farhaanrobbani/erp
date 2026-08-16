@@ -13,6 +13,8 @@ class JobVacancy extends Model
     {
         return [
             'deadline' => 'date',
+            'type' => \App\Enums\JobVacancyType::class,
+            'status' => \App\Enums\JobVacancyStatus::class,
         ];
     }
 

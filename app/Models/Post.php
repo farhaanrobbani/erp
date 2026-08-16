@@ -16,6 +16,7 @@ class Post extends Model
         return [
             'is_published' => 'boolean',
             'published_at' => 'datetime',
+            'category' => \App\Enums\PostCategory::class,
         ];
     }
 

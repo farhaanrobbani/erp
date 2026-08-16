@@ -72,6 +72,18 @@ class RolesAndPermissionsSeeder extends Seeder
 
         $superAdmin->syncPermissions(Permission::all());
 
+        $contentManager = Role::firstOrCreate(['name' => 'content_manager', 'guard_name' => 'web']);
+
+        $contentManager->syncPermissions([
+            'view_any_project', 'view_project', 'create_project', 'update_project', 'delete_project',
+            'view_any_company-profile', 'view_company-profile', 'create_company-profile', 'update_company-profile',
+            'view_any_certificate-legality', 'view_certificate-legality', 'create_certificate-legality', 'update_certificate-legality', 'delete_certificate-legality',
+            'view_any_post', 'view_post', 'create_post', 'update_post', 'delete_post',
+            'view_any_job-vacancy', 'view_job-vacancy', 'create_job-vacancy', 'update_job-vacancy', 'delete_job-vacancy',
+            'view_any_career-application', 'view_career-application', 'update_career-application',
+            'view_any_contact-message', 'view_contact-message', 'update_contact-message', 'delete_contact-message',
+        ]);
+
         $hrd->syncPermissions([
             'view_any_department', 'view_department', 'create_department', 'update_department',
             'view_any_employee', 'view_employee', 'create_employee', 'update_employee',

@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CertificateLegality extends Model
 {
+    protected $table = 'certificates_legalities';
+
     protected $guarded = [];
 
     protected function casts(): array
@@ -14,6 +16,7 @@ class CertificateLegality extends Model
             'issue_date' => 'date',
             'expiry_date' => 'date',
             'is_active' => 'boolean',
+            'type' => \App\Enums\CertificateType::class,
         ];
     }
 }

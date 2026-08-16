@@ -8,6 +8,13 @@ class CareerApplication extends Model
 {
     protected $guarded = [];
 
+    protected function casts(): array
+    {
+        return [
+            'status' => \App\Enums\CareerApplicationStatus::class,
+        ];
+    }
+
     public function jobVacancy()
     {
         return $this->belongsTo(JobVacancy::class);
