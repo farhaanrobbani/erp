@@ -89,6 +89,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'view_any_department', 'view_department', 'create_department', 'update_department',
             'view_any_employee', 'view_employee', 'create_employee', 'update_employee',
             'view_any_employee-document', 'view_employee-document', 'create_employee-document', 'update_employee-document',
+            'view_any_work-location', 'view_work-location', 'create_work-location', 'update_work-location',
             'view_any_attendance', 'view_attendance', 'create_attendance', 'update_attendance',
             'view_any_leave', 'view_leave', 'create_leave', 'update_leave', 'approve_letter-request', 'reject_letter-request',
             'view_any_letter-request', 'view_letter-request', 'create_letter-request', 'update_letter-request',
