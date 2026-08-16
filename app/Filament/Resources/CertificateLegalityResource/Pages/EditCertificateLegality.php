@@ -1,0 +1,19 @@
+<?php
+
+namespace App\Filament\Resources\CertificateLegalityResource\Pages;
+
+use App\Filament\Resources\CertificateLegalityResource;
+use Filament\Actions;
+use Filament\Resources\Pages\EditRecord;
+
+class EditCertificateLegality extends EditRecord
+{
+    protected static string $resource = CertificateLegalityResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\DeleteAction::make(),
+        ];
+    }
+}

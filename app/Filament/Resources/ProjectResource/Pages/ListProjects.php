@@ -1,0 +1,31 @@
+<?php
+
+namespace App\Filament\Resources\ProjectResource\Pages;
+
+use App\Filament\Resources\ProjectResource;
+use Filament\Actions;
+use Filament\Resources\Pages\ListRecords;
+
+class ListProjects extends ListRecords
+{
+    protected static string $resource = ProjectResource::class;
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return [
+            ProjectResource\Widgets\ProjectStatsOverview::class,
+        ];
+    }
+
+    public function getHeaderWidgetsColumns(): array|int
+    {
+        return 4;
+    }
+}
