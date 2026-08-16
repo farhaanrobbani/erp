@@ -64,7 +64,7 @@ return new class extends Migration
             $table->date('letter_date');
             $table->date('received_date')->nullable();
             $table->longText('disposition')->nullable();
-            $table->string('file_path', 255);
+            $table->string('file_path', 255)->nullable();
             $table->foreignId('uploaded_by')->nullable()->constrained('users')->nullOnDelete();
             $table->timestamps();
 

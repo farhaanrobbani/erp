@@ -62,7 +62,7 @@ class ViewLetterRequest extends ViewRecord implements HasForms
                 ->color('danger')
                 ->visible(fn () => $record->status->value === 'pending'
                     && auth()->user()?->can('reject_letter-request'))
-                ->form([
+                ->schema([
                     Textarea::make('rejection_reason')
                         ->label('Alasan Penolakan')
                         ->required()
@@ -84,7 +84,7 @@ class ViewLetterRequest extends ViewRecord implements HasForms
                 ->icon('heroicon-o-arrow-up-tray')
                 ->color('info')
                 ->visible(fn () => $record->status->value === 'approved')
-                ->form([
+                ->schema([
                     FileUpload::make('file_path')
                         ->label('File PDF Surat (Sudah Ditandatangani)')
                         ->disk('public')

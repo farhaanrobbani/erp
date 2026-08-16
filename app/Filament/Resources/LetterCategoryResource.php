@@ -6,6 +6,7 @@ use App\Filament\Resources\LetterCategoryResource\Pages;
 use App\Models\LetterCategory;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -30,7 +31,7 @@ class LetterCategoryResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Kode Surat')
+                Section::make('Kode Surat')
                     ->description('Kategori & format penomoran surat keluar')
                     ->schema([
                         Forms\Components\TextInput::make('code')
@@ -38,7 +39,7 @@ class LetterCategoryResource extends Resource
                             ->required()
                             ->maxLength(20)
                             ->unique(ignoreRecord: true)
-                            ->uppercase()
+                            ->dehydrateStateUsing(fn (string $state): string => strtoupper($state))
                             ->helperText('Contoh: MEMO, SPK, KET, SK, TND'),
                         Forms\Components\TextInput::make('name')
                             ->label('Nama Kategori')

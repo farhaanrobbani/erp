@@ -4,9 +4,11 @@ namespace App\Filament\Resources;
 
 use App\Enums\MailArchiveType;
 use App\Filament\Resources\MailArchiveResource\Pages;
+use App\Models\LetterRequest;
 use App\Models\MailArchive;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -31,7 +33,7 @@ class MailArchiveResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Arsip Surat')
+                Section::make('Arsip Surat')
                     ->schema([
                         Forms\Components\Select::make('type')
                             ->label('Jenis Surat')
@@ -53,6 +55,7 @@ class MailArchiveResource extends Resource
                         Forms\Components\Select::make('letter_request_id')
                             ->label('Tautan Pengajuan (Opsional)')
                             ->relationship('letterRequest', 'generated_letter_number')
+                            ->getOptionLabelFromRecordUsing(fn (LetterRequest $record) => $record->generated_letter_number ?? "Pengajuan #{$record->id}")
                             ->searchable()
                             ->preload()
                             ->nullable(),

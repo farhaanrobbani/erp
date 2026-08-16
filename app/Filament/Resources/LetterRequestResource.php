@@ -7,6 +7,8 @@ use App\Filament\Resources\LetterRequestResource\Pages;
 use App\Models\LetterRequest;
 use Filament\Actions;
 use Filament\Forms;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Schemas\Components\Section;
 use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Notifications\Notification;
@@ -51,7 +53,7 @@ class LetterRequestResource extends Resource
     {
         return $schema
             ->schema([
-                Forms\Components\Section::make('Form Pengajuan Nomor Surat')
+                Section::make('Form Pengajuan Nomor Surat')
                     ->description('Isi perihal & tujuan surat, sistem akan menomori otomatis setelah disetujui admin.')
                     ->schema([
                         Forms\Components\Select::make('letter_category_id')
@@ -79,14 +81,14 @@ class LetterRequestResource extends Resource
                             ->label('Catatan / Keterangan')
                             ->maxLength(1000)
                             ->columnSpanFull(),
-                        Forms\Components\Placeholder::make('status_preview')
+                        TextEntry::make('status_preview')
                             ->label('Status')
-                            ->content(fn (?LetterRequest $record) => $record
-                                ? LetterRequestStatus::from($record->status)->label()
+                            ->state(fn (?LetterRequest $record) => $record
+                                ? $record->status->label()
                                 : 'Pending / Waiting Approval'),
-                        Forms\Components\Placeholder::make('generated_number')
+                        TextEntry::make('generated_number')
                             ->label('Nomor Surat (Setelah Disetujui)')
-                            ->content(fn (?LetterRequest $record) => $record?->generated_letter_number ?? '-'),
+                            ->state(fn (?LetterRequest $record) => $record?->generated_letter_number ?? '-'),
                     ])
                     ->columns(2),
             ]);
