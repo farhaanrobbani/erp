@@ -43,6 +43,7 @@ class User extends Authenticatable implements FilamentUser
             'finance',
             'project_manager',
             'employee',
+            'content_manager',
         ]);
     }
 }

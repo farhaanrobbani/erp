@@ -42,6 +42,7 @@ class RolesAndPermissionsSeeder extends Seeder
         'payroll',
         'payroll-detail',
         'file-manager',
+        'user',
     ];
 
     private const ACTIONS = [
