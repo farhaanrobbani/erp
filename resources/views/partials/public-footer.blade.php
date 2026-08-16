@@ -1,4 +1,4 @@
-<footer class="border-t border-slate-200 bg-slate-950 py-12 text-slate-400">
+<footer class="border-t border-slate-200 bg-blue-950 py-12 text-slate-400">
     <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-6 md:grid-cols-3">
         <div>
             <p class="text-lg font-semibold text-white">PT. Karya Nusantara Konstruksi</p>

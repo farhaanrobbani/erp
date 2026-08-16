@@ -1,0 +1,9 @@
+@import '../../../../vendor/filament/filament/resources/css/theme.css';
+
+.fi-sidebar {
+    background-color: #ffffff;
+}
+
+.fi-sidebar-header {
+    background-color: #ffffff;
+}

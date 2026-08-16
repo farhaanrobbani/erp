@@ -5,7 +5,9 @@ namespace App\Filament\Resources;
 use App\Enums\LetterRequestStatus;
 use App\Filament\Resources\LetterRequestResource\Pages;
 use App\Models\LetterRequest;
+use Filament\Actions;
 use Filament\Forms;
+use Filament\Schemas\Components\Utilities\Set;
 use Filament\Schemas\Schema;
 use Filament\Notifications\Notification;
 use Filament\Resources\Resource;
@@ -59,7 +61,7 @@ class LetterRequestResource extends Resource
                             ->preload()
                             ->required()
                             ->live()
-                            ->afterStateUpdated(fn (Forms\Set $set, ?string $state) => $set('subject', '')),
+                            ->afterStateUpdated(fn (Set $set, ?string $state) => $set('subject', '')),
                         Forms\Components\TextInput::make('subject')
                             ->label('Perihal / Tujuan Surat')
                             ->required()
@@ -137,17 +139,17 @@ class LetterRequestResource extends Resource
                     ->relationship('letterCategory', 'name'),
             ])
             ->actions([
-                Tables\Actions\ViewAction::make(),
-                Tables\Actions\EditAction::make()
+                Actions\ViewAction::make(),
+                Actions\EditAction::make()
                     ->visible(fn (LetterRequest $record) => $record->status->value === 'pending'
                         && auth()->user()?->can('update_letter-request')),
-                Tables\Actions\DeleteAction::make()
+                Actions\DeleteAction::make()
                     ->visible(fn (LetterRequest $record) => $record->status->value === 'pending'
                         && (auth()->user()?->id === $record->user_id || auth()->user()?->hasRole('super_admin'))),
             ])
             ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
+                Actions\BulkActionGroup::make([
+                    Actions\DeleteBulkAction::make(),
                 ]),
             ]);
     }
