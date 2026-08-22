@@ -108,6 +108,7 @@ class RolesAndPermissionsSeeder extends Seeder
             'view_any_safety-checklist', 'view_safety-checklist', 'create_safety-checklist', 'update_safety-checklist',
             'view_any_safety-hour', 'view_safety-hour', 'create_safety-hour', 'update_safety-hour',
             'view_any_working-permit', 'view_working-permit', 'create_working-permit', 'update_working-permit',
+            'view_any_certification', 'view_certification', 'create_certification', 'update_certification',
             'view_any_file-manager', 'view_file-manager', 'create_file-manager',
             'export_report',
         ]);
