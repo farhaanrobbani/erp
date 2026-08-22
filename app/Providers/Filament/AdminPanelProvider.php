@@ -29,7 +29,15 @@ class AdminPanelProvider extends PanelProvider
             ->path('admin')
             ->login()
             ->brandName('Kontraktor ERP')
-            ->brandLogo(fn (): ?string => ($path = CompanyProfile::value('general.logo')) ? asset('storage/'.$path) : null)
+            ->brandLogo(function (): ?string {
+                try {
+                    $path = CompanyProfile::value('general.logo');
+                } catch (\Throwable) {
+                    return null;
+                }
+
+                return $path ? asset('storage/'.$path) : null;
+            })
             ->colors([
                 'primary' => Color::Blue,
             ])
