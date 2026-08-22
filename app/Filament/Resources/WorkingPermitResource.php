@@ -7,6 +7,7 @@ use App\Models\WorkingPermit;
 use Filament\Actions;
 use Filament\Forms;
 use Filament\Schemas\Components\Section;
+use Filament\Schemas\Components\Utilities\Get;
 use Filament\Schemas\Schema;
 use Filament\Resources\Resource;
 use Filament\Tables;
@@ -71,8 +72,8 @@ class WorkingPermitResource extends Resource
                             ->getOptionLabelFromRecordUsing(fn ($record) => $record->employee_no . ' — ' . $record->user->name)
                             ->searchable(['employee_no', 'user.name'])
                             ->preload()
-                            ->visible(fn (Forms\Get $get): bool => $get('holder_type') === 'person')
-                            ->required(fn (Forms\Get $get): bool => $get('holder_type') === 'person'),
+                            ->visible(fn (Get $get): bool => $get('holder_type') === 'person')
+                            ->required(fn (Get $get): bool => $get('holder_type') === 'person'),
                         Forms\Components\TextInput::make('number')
                             ->label('Nomor')
                             ->required()
