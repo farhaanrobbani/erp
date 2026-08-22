@@ -122,19 +122,20 @@ class PayrollResource extends Resource
                                         'allowance' => 'Tambahan (+)',
                                         'deduction' => 'Potongan (-)',
                                     ])
-                                    ->required(),
-                                Forms\Components\TextInput::make('name')
-                                    ->label('Nama Komponen')
                                     ->required()
-                                    ->maxLength(150)
-                                    ->columnSpan(3),
+                                    ->native(false),
                                 Forms\Components\TextInput::make('amount')
                                     ->label('Jumlah (Rp)')
                                     ->numeric()
                                     ->required()
                                     ->prefix('Rp'),
+                                Forms\Components\TextInput::make('name')
+                                    ->label('Nama Komponen')
+                                    ->required()
+                                    ->maxLength(150)
+                                    ->columnSpanFull(),
                             ])
-                            ->columns(6)
+                            ->columns(2)
                             ->defaultItems(0)
                             ->reorderable()
                             ->collapsible(),

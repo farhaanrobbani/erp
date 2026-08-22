@@ -80,25 +80,25 @@ class ReimbursementResource extends Resource
                                     ])
                                     ->required()
                                     ->native(false),
-                                Forms\Components\TextInput::make('description')
-                                    ->label('Keterangan')
-                                    ->required()
-                                    ->maxLength(255)
-                                    ->columnSpan(3),
                                 Forms\Components\TextInput::make('amount')
                                     ->label('Jumlah (Rp)')
                                     ->numeric()
                                     ->required()
                                     ->prefix('Rp')
                                     ->minValue(0),
+                                Forms\Components\TextInput::make('description')
+                                    ->label('Keterangan')
+                                    ->required()
+                                    ->maxLength(255)
+                                    ->columnSpanFull(),
                                 Forms\Components\FileUpload::make('receipt_path')
                                     ->label('Bon/Struk')
                                     ->disk('public')
                                     ->directory('reimbursement-receipts')
                                     ->image()
-                                    ->columnSpan(2),
+                                    ->columnSpanFull(),
                             ])
-                            ->columns(6)
+                            ->columns(2)
                             ->defaultItems(1)
                             ->reorderable()
                             ->collapsible(),
